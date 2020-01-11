@@ -6,8 +6,7 @@
     "postinstall": "npm run bootstrap",
     "build": "lerna exec --parallel -- babel src -d dist --ignore test.js",
     "build:watch": "lerna exec --parallel -- babel --watch src -d dist --ignore test.js",
-    "test": "jest --verbose --passWithNoTests",
-    "test:coverage": "jest --coverage --verbose",
+    "test": "jest --coverage --verbose --passWithNoTests",
     "test:watch": "jest --coverage --verbose --watch",
     "publish": "lerna publish",
     "prepublish": "npm run build",
@@ -48,7 +47,7 @@
       "!**/node_modules/**"
     ],
     "coverageReporters": [
-      "lcov",
+      "lcovonly",
       "html"
     ],
     "coveragePathIgnorePatterns": [
