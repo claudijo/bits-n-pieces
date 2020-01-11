@@ -1,0 +1,14 @@
+{
+  "name": "@claudijo/validators",
+  "version": "0.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "Claudijo Borovic <claudijo.borovic@gmail.com>",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@claudijo/formats": "^0.0.0"
+  }
+}

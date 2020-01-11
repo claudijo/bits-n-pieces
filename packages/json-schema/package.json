@@ -1,0 +1,11 @@
+{
+  "name": "@claudijo/json-schema",
+  "version": "0.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "Claudijo Borovic <claudijo.borovic@gmail.com>",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}

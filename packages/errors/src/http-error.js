@@ -1,6 +1,6 @@
 const http = require('http');
 
-class HttpError extends Error {
+export default class HttpError extends Error {
   constructor(status, ...params) {
     // Pass remaining arguments (including vendor specific ones) to parent constructor
     super(...params);
@@ -15,5 +15,3 @@ class HttpError extends Error {
     this.status = status;
   }
 }
-
-module.exports = HttpError;

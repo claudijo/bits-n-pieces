@@ -1,4 +1,4 @@
-class ValidationError extends Error {
+export default class ValidationError extends Error {
   constructor(errors, ...params) {
     // Pass remaining arguments (including vendor specific ones) to parent constructor
     super(...params);
@@ -12,5 +12,3 @@ class ValidationError extends Error {
     this.errors = errors;
   }
 }
-
-module.exports = ValidationError;

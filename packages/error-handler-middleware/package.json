@@ -1,0 +1,17 @@
+{
+  "name": "@claudijo/error-handler-middleware",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "keywords": [],
+  "author": "Claudijo Borovic <claudijo.borovic@gmail.com>",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@claudijo/logger": "^0.0.0",
+    "@polka/send-type": "^0.5.2",
+    "request-ip": "^2.1.3"
+  }
+}

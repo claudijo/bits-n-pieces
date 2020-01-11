@@ -1,6 +1,6 @@
 const HttpError = require('./http-error');
 
-class HttpJsonError extends HttpError {
+export default class HttpJsonError extends HttpError {
   constructor(status, errors, ...params) {
     // Pass remaining arguments (including vendor specific ones) to parent constructor
     super(status, JSON.stringify(errors), ...params);
@@ -14,5 +14,3 @@ class HttpJsonError extends HttpError {
     this.errors = errors
   }
 }
-
-module.exports = HttpJsonError;
