@@ -1,6 +1,9 @@
 {
   "name": "@claudijo/bits-n-pieces",
-  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/claudijo/bits-n-pieces.git"
+  },
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "postinstall": "npm run bootstrap",
