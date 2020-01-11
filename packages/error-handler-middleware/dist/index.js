@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.onError = onError;
+exports.default = onError;
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
@@ -12,9 +12,8 @@ var http = require('http');
 var requestIp = require('request-ip');
 var winston = require('@claudijo/logger');
 
+// eslint-disable-next-line no-unused-vars
 function onError(err, req, res, next) {
-  console.error(err.stack);
-
   var name = err.name,
       stack = err.stack,
       message = err.message,
@@ -32,3 +31,4 @@ function onError(err, req, res, next) {
     errors: [{ message: http.STATUS_CODES[statusCode] }]
   });
 }
+module.exports = exports.default;

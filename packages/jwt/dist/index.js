@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.sign = sign;
 var jwt = require('jsonwebtoken');
 
+// eslint-disable-next-line import/prefer-default-export
 function sign(payload, secret) {
   var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
@@ -14,7 +15,7 @@ function sign(payload, secret) {
       if (error) {
         return reject(error);
       }
-      resolve(token);
+      return resolve(token);
     });
   });
 }

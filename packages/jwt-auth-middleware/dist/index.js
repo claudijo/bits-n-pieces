@@ -24,19 +24,22 @@ function jwtAuth(secret) {
       return next(error);
     }
 
-    jwt.verify(token, secret, function (error, decoded) {
+    return jwt.verify(token, secret, function (error, decoded) {
       if (error) {
-        error.message = changeCase.snakeCase(error.message).toUpperCase();
-        error.status = 403;
-        return next(error);
+        return next(_extends({}, error, {
+          message: changeCase.snakeCase(error.message).toUpperCase(),
+          status: 403
+        }));
       }
 
-      delete decoded.iat;
-      delete decoded.exp;
+      var stripped = _extends({}, decoded);
 
-      res.locals = _extends({}, res.locals, decoded);
+      delete stripped.iat;
+      delete stripped.exp;
 
-      next();
+      res.locals = _extends({}, res.locals, stripped);
+
+      return next();
     });
   };
 }

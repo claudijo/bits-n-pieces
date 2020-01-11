@@ -17,6 +17,7 @@ var htmlToTextConverterOptions = {
   }
 };
 
+// eslint-disable-next-line import/prefer-default-export
 function htmlToText(html) {
   return htmlToTextConverter.fromString(html, htmlToTextConverterOptions);
 }
