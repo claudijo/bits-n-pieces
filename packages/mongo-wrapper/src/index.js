@@ -1,4 +1,4 @@
-const MongoClient = require('mongodb').MongoClient;
+const { MongoClient } = require('mongodb');
 const EventEmitter = require('events');
 
 export default class MongoWrapper extends EventEmitter {

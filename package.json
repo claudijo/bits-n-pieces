@@ -6,13 +6,14 @@
     "postinstall": "npm run bootstrap",
     "build": "lerna exec --parallel -- babel src -d dist --ignore test.js",
     "build:watch": "lerna exec --parallel -- babel --watch src -d dist --ignore test.js",
-    "test": "jest --coverage --verbose",
+    "test": "jest --coverage --verbose --passWithNoTests",
     "test:watch": "jest --coverage --verbose --watch",
     "publish": "lerna publish",
     "prepublish": "npm run build",
     "lint:js": "eslint . --fix --cache --ignore-path .lintignore",
     "lint:css": "stylelint --fix '**/*.css **/*.scss' --ignore-path .lintignore",
-    "lint": "npm run lint:js && npm run lint:css"
+    "lint_use_once_we_have_css": "npm run lint:js && npm run lint:css",
+    "lint": "npm run lint:js"
   },
   "precommit": [
     "lint",

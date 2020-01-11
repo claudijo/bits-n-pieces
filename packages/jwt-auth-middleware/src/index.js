@@ -13,20 +13,25 @@ export default function jwtAuth(secret) {
       return next(error);
     }
 
-    jwt.verify(token, secret, (error, decoded) => {
+    return jwt.verify(token, secret, (error, decoded) => {
       if (error) {
-        error.message = changeCase.snakeCase(error.message).toUpperCase();
-        error.status = 403;
-        return next(error);
+        return next({
+          ...error,
+          message: changeCase.snakeCase(error.message).toUpperCase(),
+          status: 403,
+        });
       }
 
-      delete decoded.iat;
-      delete decoded.exp;
+      const stripped = {
+        ...decoded,
+      };
 
-      res.locals = { ...res.locals, ...decoded };
+      delete stripped.iat;
+      delete stripped.exp;
 
-      next();
+      res.locals = { ...res.locals, ...stripped };
+
+      return next();
     });
   };
 }
-

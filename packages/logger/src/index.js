@@ -7,8 +7,8 @@ const format = winston.format.combine(
   winston.format.timestamp(),
   winston.format.align(),
   winston.format.printf(
-    info => `${info.timestamp} ${info.level} ${info.message}`,
-  )
+    (info) => `${info.timestamp} ${info.level} ${info.message}`,
+  ),
 );
 
 const logger = winston.createLogger({
@@ -23,7 +23,7 @@ const logger = winston.createLogger({
     new WinstonDailyRotateFile({
       filename: './logs/combined-%DATE%.log',
       datePattern: 'YYYY-MM-DD',
-    })
+    }),
   ],
 });
 
@@ -33,8 +33,9 @@ if (process.env.NODE_ENV !== 'production') {
 
 // create a stream object with a 'write' function that will be used by `morgan`
 logger.stream = {
-  write: function(message, encoding) {
-    // use the 'info' log level so the output will be picked up by both transports (file and console)
+  write(message /* , encoding */) {
+    // use the 'info' log level so the output will be picked up by both
+    // transports (file and console)
     logger.info(message);
   },
 };

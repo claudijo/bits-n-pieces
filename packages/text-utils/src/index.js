@@ -4,14 +4,15 @@ const htmlToTextConverter = require('html-to-text');
 
 const htmlToTextConverterOptions = {
   format: {
-    heading: function(elem, fn, options) {
+    heading(elem, fn, options) {
       const h = fn(elem.children, options);
-      return `**  ${h.toUpperCase()}\n` +
-        '------------------------------------------------------------\n';
-    }
-  }
+      return `**  ${h.toUpperCase()}\n`
+        + '------------------------------------------------------------\n';
+    },
+  },
 };
 
+// eslint-disable-next-line import/prefer-default-export
 export function htmlToText(html) {
   return htmlToTextConverter.fromString(html, htmlToTextConverterOptions);
 }

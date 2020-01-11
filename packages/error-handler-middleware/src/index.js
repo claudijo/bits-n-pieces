@@ -3,10 +3,11 @@ const http = require('http');
 const requestIp = require('request-ip');
 const winston = require('@claudijo/logger');
 
-export function onError(err, req, res, next) {
-  console.error(err.stack);
-
-  const { name, stack, message, status, code, ...rest } = err;
+// eslint-disable-next-line no-unused-vars
+export default function onError(err, req, res, next) {
+  const {
+    name, stack, message, status, code, ...rest
+  } = err;
   const statusCode = status || code || 500;
 
   const ip = requestIp.getClientIp(req);

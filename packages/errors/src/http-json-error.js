@@ -11,6 +11,6 @@ export default class HttpJsonError extends HttpError {
     }
 
     this.name = 'HttpJsonError';
-    this.errors = errors
+    this.errors = errors;
   }
 }
