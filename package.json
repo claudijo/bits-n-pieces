@@ -1,7 +1,57 @@
 {
-  "name": "root",
+  "name": "@claudijo/bits-n-pieces",
   "private": true,
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "postinstall": "npm run bootstrap",
+    "build": "lerna exec --parallel -- babel src -d dist --ignore test.js",
+    "build:watch": "lerna exec --parallel -- babel --watch src -d dist --ignore test.js",
+    "test": "jest --coverage --verbose",
+    "test:watch": "jest --coverage --verbose --watch",
+    "publish": "lerna publish",
+    "prepublish": "npm run build",
+    "lint:js": "eslint . --fix --cache --ignore-path .lintignore",
+    "lint:css": "stylelint --fix '**/*.css **/*.scss' --ignore-path .lintignore",
+    "lint": "npm run lint:js && npm run lint:css"
+  },
   "devDependencies": {
-    "lerna": "^3.16.4"
-  }
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^10.0.3",
+    "babel-jest": "^24.9.0",
+    "babel-plugin-add-module-exports": "^1.0.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.0",
+    "jest": "^24.9.0",
+    "lerna": "^3.20.2",
+    "pre-commit": "^1.2.2",
+    "stylelint": "^12.0.1",
+    "stylelint-config-standard": "^19.0.0"
+  },
+  "jest": {
+    "resetMocks": true,
+    "resetModules": true,
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "packages/**/*.js",
+      "!packages/**/dist/**",
+      "!**/node_modules/**"
+    ],
+    "coverageReporters": [
+      "lcov",
+      "html"
+    ],
+    "coveragePathIgnorePatterns": [
+      "<rootDir>node_modules/",
+      "<rootDir>coverage/"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>node_modules/"
+    ]
+  },
+  "license": "MIT"
 }
