@@ -25,7 +25,7 @@ in `src` will be transpiled using babel and put in `dist`
             `-- test.js
 ```
 
-The `package.json` file must include an organization scoped `name` and a `publishConfig` directive that 
+The `package.json` file must include an user/organization scoped `name` and a `publishConfig` directive that 
 grants public access. The main file should point to the entry point file in the `dist` folder. See 
 minimal example below.
 
@@ -105,11 +105,6 @@ Publishing is intelligently done through `lerna` using the command `npm run publ
 
 Note that you must be on the `master` branch to publish and `lerna` will let you know
 if you try to publish on another branch.
-
-### Prerequisites  
-
-Before publishing to npm, you need to have a npm user account, be a team member of the @claudijo npm 
-organization and have your npm user added locally `npm adduser --scope=@claudijo`. 
 
 ## If packages require polyfills
 
