@@ -4,9 +4,14 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
 
 exports.default = jwtAuth;
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var jwt = require('jsonwebtoken');
 var changeCase = require('change-case');
 
@@ -26,18 +31,18 @@ function jwtAuth(secret) {
 
     return jwt.verify(token, secret, function (error, decoded) {
       if (error) {
-        return next(_extends({}, error, {
+        return next((0, _extends3.default)({}, error, {
           message: changeCase.snakeCase(error.message).toUpperCase(),
           status: 403
         }));
       }
 
-      var stripped = _extends({}, decoded);
+      var stripped = (0, _extends3.default)({}, decoded);
 
       delete stripped.iat;
       delete stripped.exp;
 
-      res.locals = _extends({}, res.locals, stripped);
+      res.locals = (0, _extends3.default)({}, res.locals, stripped);
 
       return next();
     });

@@ -3,9 +3,18 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _keys = require('babel-runtime/core-js/object/keys');
+
+var _keys2 = _interopRequireDefault(_keys);
+
+var _objectWithoutProperties2 = require('babel-runtime/helpers/objectWithoutProperties');
+
+var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+
 exports.default = onError;
 
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var send = require('@polka/send-type');
 var http = require('http');
@@ -19,7 +28,7 @@ function onError(err, req, res, next) {
       message = err.message,
       status = err.status,
       code = err.code,
-      rest = _objectWithoutProperties(err, ['name', 'stack', 'message', 'status', 'code']);
+      rest = (0, _objectWithoutProperties3.default)(err, ['name', 'stack', 'message', 'status', 'code']);
 
   var statusCode = status || code || 500;
 
@@ -27,7 +36,7 @@ function onError(err, req, res, next) {
 
   winston.error([statusCode, err.message, req.originalUrl, req.method, ip].join(' - '));
 
-  send(res, statusCode, Object.keys(rest).length ? rest : {
+  send(res, statusCode, (0, _keys2.default)(rest).length ? rest : {
     errors: [{ message: http.STATUS_CODES[statusCode] }]
   });
 }
