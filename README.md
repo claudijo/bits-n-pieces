@@ -1,7 +1,7 @@
 # Bits n' pieces
 
 [Monorepo](https://www.google.com/search?q=what+are+monorepos%3F) for common JavaScript open 
-source code that has been set up using [Lerna](https://github.com/lerna/lerna)
+source code by @Claudijo that has been set up using [Lerna](https://github.com/lerna/lerna)
 
 ## Working with packages
 
@@ -100,7 +100,7 @@ tests on change.
 
 ## Publish 
 
-Files are published to npm, scoped to the @claudijo organisation (https://www.npmjs.com/org/claudijo). 
+Files are published to npm, scoped to the @claudijo user/organisation (https://www.npmjs.com/org/claudijo). 
 Publishing is intelligently done through `lerna` using the command `npm run publish`.
 
 Note that you must be on the `master` branch to publish and `lerna` will let you know
