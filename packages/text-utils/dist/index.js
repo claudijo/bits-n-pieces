@@ -1,23 +1,24 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.htmlToText = htmlToText;
+
 // This import (htmlToTextConverter) has issues with rollup, so this file should
 // not be imported in the web app, until fixed...
-var htmlToTextConverter = require('html-to-text');
+const htmlToTextConverter = require('html-to-text');
 
-var htmlToTextConverterOptions = {
+const htmlToTextConverterOptions = {
   format: {
-    heading: function heading(elem, fn, options) {
-      var h = fn(elem.children, options);
-      return '**  ' + h.toUpperCase() + '\n' + '------------------------------------------------------------\n';
+    heading(elem, fn, options) {
+      const h = fn(elem.children, options);
+      return `**  ${h.toUpperCase()}\n` + '------------------------------------------------------------\n';
     }
-  }
-};
 
-// eslint-disable-next-line import/prefer-default-export
+  }
+}; // eslint-disable-next-line import/prefer-default-export
+
 function htmlToText(html) {
   return htmlToTextConverter.fromString(html, htmlToTextConverterOptions);
 }

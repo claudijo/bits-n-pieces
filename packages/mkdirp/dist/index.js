@@ -1,16 +1,15 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = _default;
 
-var _promise = require('babel-runtime/core-js/promise');
+const mkdirp = require('mkdirp');
 
-var _promise2 = _interopRequireDefault(_promise);
-
-exports.default = function (dir, opts) {
-  return new _promise2.default(function (resolve, reject) {
-    mkdirp(dir, opts, function (err, made) {
+function _default(dir, opts) {
+  return new Promise((resolve, reject) => {
+    mkdirp(dir, opts, (err, made) => {
       if (err) {
         return reject(err);
       }
@@ -18,10 +17,6 @@ exports.default = function (dir, opts) {
       return resolve(made);
     });
   });
-};
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var mkdirp = require('mkdirp');
+}
 
 module.exports = exports.default;

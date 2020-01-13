@@ -1,12 +1,11 @@
-'use strict';
+"use strict";
 
-var _require = require('ulid'),
-    monotonicFactory = _require.monotonicFactory;
+const {
+  monotonicFactory
+} = require('ulid');
 
-var ulid = monotonicFactory();
+const ulid = monotonicFactory();
 
-var ulidToLowerCase = function ulidToLowerCase() {
-  return ulid.apply(undefined, arguments).toLowerCase();
-};
+const ulidToLowerCase = (...args) => ulid(...args).toLowerCase();
 
 module.exports = ulidToLowerCase;
