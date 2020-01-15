@@ -7,8 +7,8 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "postinstall": "npm run bootstrap",
-    "build": "lerna exec --parallel -- babel --root-mode upward src --out-dir dist --ignore test.js",
-    "build:watch": "lerna exec --parallel -- babel --root-mode upward --watch src -d dist --ignore test.js --verbose",
+    "build": "lerna exec --parallel -- babel --root-mode upward src --out-dir dist --ignore test.js --no-comments",
+    "build:watch": "lerna exec --parallel -- babel --root-mode upward --watch src -d dist --ignore test.js --verbose --no-comments",
     "test": "jest --coverage --verbose --passWithNoTests",
     "test:watch": "jest --coverage --verbose --watch",
     "publish": "lerna publish",

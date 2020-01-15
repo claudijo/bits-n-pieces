@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.dateFromUlid = dateFromUlid;
-var alphabet = '0123456789ABCDEFGHJKMNPQRSTVWXYZ'; // eslint-disable-next-line import/prefer-default-export
+var alphabet = '0123456789ABCDEFGHJKMNPQRSTVWXYZ';
 
 function dateFromUlid(ulid) {
   var timestamp = 0;

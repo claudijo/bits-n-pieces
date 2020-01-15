@@ -3,7 +3,7 @@ const http = require('http');
 const requestIp = require('request-ip');
 const logger = require('@claudijo/logger');
 
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line no-unused-vars, import/prefer-default-export
 export function onError(err, req, res, next) {
   const {
     stack = '', status, code, ...rest

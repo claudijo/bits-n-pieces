@@ -11,8 +11,7 @@ const http = require('http');
 
 const requestIp = require('request-ip');
 
-const logger = require('@claudijo/logger'); // eslint-disable-next-line no-unused-vars
-
+const logger = require('@claudijo/logger');
 
 function onError(err, req, res, next) {
   const {

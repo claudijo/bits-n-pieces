@@ -5,8 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.sign = sign;
 
-const jwt = require('jsonwebtoken'); // eslint-disable-next-line import/prefer-default-export
-
+const jwt = require('jsonwebtoken');
 
 function sign(payload, secret, options = {}) {
   return new Promise((resolve, reject) => {

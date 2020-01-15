@@ -5,8 +5,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.htmlToText = htmlToText;
 
-// This import (htmlToTextConverter) has issues with rollup, so this file should
-// not be imported in the web app, until fixed...
 const htmlToTextConverter = require('html-to-text');
 
 const htmlToTextConverterOptions = {
@@ -17,7 +15,7 @@ const htmlToTextConverterOptions = {
     }
 
   }
-}; // eslint-disable-next-line import/prefer-default-export
+};
 
 function htmlToText(html) {
   return htmlToTextConverter.fromString(html, htmlToTextConverterOptions);
