@@ -7,37 +7,44 @@ exports.default = void 0;
 
 const winston = require('winston');
 
-const WinstonDailyRotateFile = require('winston-daily-rotate-file');
+const morgan = require('morgan'); // eslint-disable-next-line new-cap
 
-const format = winston.format.combine(winston.format.colorize(), winston.format.timestamp(), winston.format.timestamp(), winston.format.align(), winston.format.printf(info => `${info.timestamp} ${info.level} ${info.message}`));
-const logger = winston.createLogger({
-  format,
-  level: 'info',
-  transports: [new WinstonDailyRotateFile({
-    filename: './logs/error-%DATE%.log',
-    datePattern: 'YYYY-MM-DD',
-    level: 'error'
-  }), new WinstonDailyRotateFile({
-    filename: './logs/combined-%DATE%.log',
-    datePattern: 'YYYY-MM-DD'
-  })]
+
+const logger = new winston.createLogger({
+  transports: [new winston.transports.Console({
+    level: 'info',
+    handleExceptions: true,
+    json: true,
+    prettyPrint: process.env.NODE_ENV === 'development',
+    colorize: process.env.NODE_ENV === 'development'
+  })],
+  exitOnError: false
 });
-
-if (process.env.NODE_ENV !== 'production') {
-  logger.add(new winston.transports.Console());
-} // create a stream object with a 'write' function that will be used by `morgan`
-
-
+const jsonRequestFormat = {
+  remote_addr: ':remote-addr',
+  remote_user: ':remote-user',
+  date: ':date[clf]',
+  method: ':method',
+  url: ':url',
+  http_version: ':http-version',
+  status: ':status',
+  result_length: ':res[content-length]',
+  referrer: ':referrer',
+  user_agent: ':user-agent',
+  response_time: ':response-time'
+};
 logger.stream = {
-  write(message
-  /* , encoding */
-  ) {
-    // use the 'info' log level so the output will be picked up by both
-    // transports (file and console)
+  // eslint-disable-next-line no-unused-vars
+  write(message, encoding) {
     logger.info(message);
   }
 
 };
+
+logger.requestHandler = () => morgan(JSON.stringify(jsonRequestFormat), {
+  stream: logger.stream
+});
+
 var _default = logger;
 exports.default = _default;
 module.exports = exports.default;
