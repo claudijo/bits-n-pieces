@@ -78,14 +78,14 @@ Tip: Run the build in watch mode to ensure that the package is being rebuilt whe
 cd to/common/lib
 npm link
 cd to/my/project 
-link lib_name 
+npm link lib_name 
 ```
 
 When you are done with development simply unlink the package:
 
 ```
 cd to/my/project 
-unlink lib_name 
+npm unlink lib_name 
 ```
 
 #### Caveats 

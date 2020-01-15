@@ -4,23 +4,36 @@ const requestIp = require('request-ip');
 const logger = require('@claudijo/logger');
 
 // eslint-disable-next-line no-unused-vars
-export default function onError(err, req, res, next) {
+export function onError(err, req, res, next) {
   const {
-    name, stack, message, status, code, ...rest
+    stack = '', status, code, ...rest
   } = err;
-  const statusCode = status || code || 500;
+  const statusCode = err.status || err.code || 500;
 
-  const ip = requestIp.getClientIp(req);
+  const { env: { NODE_ENV: env } } = process;
 
-  logger.error({
-    code: statusCode,
-    message: err.message,
-    url: req.originalUrl,
-    method: req.method,
-    ip,
-  });
+  if (env === 'production' || env === 'stage') {
+    const ip = requestIp.getClientIp(req);
+    const error = {
+      code: statusCode,
+      message: err.message || http.STATUS_CODES[statusCode],
+      url: req.originalUrl,
+      method: req.method,
+      ip,
+      stack,
+    };
 
-  send(res, statusCode, Object.keys(rest).length ? rest : {
-    errors: [{ message: http.STATUS_CODES[statusCode] }],
-  });
+    logger.error(error);
+  }
+
+  const error = {
+    ...rest,
+    message: err.message || http.STATUS_CODES[statusCode],
+  };
+
+  if (env === 'development') {
+    error.stack = stack;
+  }
+
+  send(res, code, { errors: [error] });
 }
