@@ -9,7 +9,7 @@ module.exports = function config(api) {
   ];
 
   const plugins = [
-    '@babel/plugin-transform-runtime',
+    // '@babel/plugin-transform-runtime',
     'add-module-exports',
   ];
 
