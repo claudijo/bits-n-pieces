@@ -1,0 +1,51 @@
+[
+  {
+    "_id": { "$oid": "5da7028aba4ce0c88949e6eb" },
+    "title": "Motor vehicles",
+    "slug": "motor-vehicles",
+    "description": "Cars, trucks, motorcycles",
+    "ancestors": []
+  },
+  {
+    "_id": { "$oid": "5da70293ba4ce0c88949e6ec" },
+    "title": "For the home",
+    "slug": "for-the-home",
+    "description": "Furniture, garden, appliances, tools",
+    "ancestors": []
+  },
+  {
+    "_id": { "$oid": "5da7029cba4ce0c88949e6ed" },
+    "title": "Personal",
+    "slug": "personal",
+    "description": "Clothes, shoes, kids, baby, toys",
+    "ancestors": []
+  },
+  {
+    "_id": { "$oid": "5da702a5ba4ce0c88949e6ee" },
+    "title": "Electronics",
+    "slug": "electronics",
+    "description": "Phones, computers, video gaming, audio, video",
+    "ancestors": []
+  },
+  {
+    "_id": { "$oid": "5da702adba4ce0c88949e6ef" },
+    "title": "Leisure and hobby",
+    "slug": "leisure-and-hobby",
+    "description": "Bicycles, instruments, sport and outdoor equipment",
+    "ancestors": []
+  },
+  {
+    "_id": { "$oid": "5dbff1911c1d2c3a66c8ccb4" },
+    "title": "Eat and drink",
+    "slug": "eat-and-drink",
+    "description": "Food, beverages, canned and dry goods, candy",
+    "ancestors": []
+  },
+  {
+    "_id": { "$oid": "5dc1a55cfa6bf7ac967aa88b" },
+    "title": "Pets and pet supplies",
+    "slug": "pets",
+    "description": "Pets, pet food, pet accessories",
+    "ancestors": []
+  }
+]
