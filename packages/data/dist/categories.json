@@ -36,8 +36,8 @@
   },
   {
     "_id": { "$oid": "5dbff1911c1d2c3a66c8ccb4" },
-    "title": "Eat and drink",
-    "slug": "eat-and-drink",
+    "title": "Food and beverages",
+    "slug": "food-and-beverages",
     "description": "Food, beverages, canned and dry goods, candy",
     "ancestors": []
   },
