@@ -35,5 +35,5 @@ export function onError(err, req, res, next) {
     error.stack = stack;
   }
 
-  send(res, code, { errors: [error] });
+  send(res, statusCode, { errors: [error] });
 }
