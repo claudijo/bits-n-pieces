@@ -16,14 +16,15 @@ const logger = require('@claudijo/logger');
 const Rollbar = require('rollbar');
 
 const {
-  ROLLBAR_ACCESS_TOKEN
+  ROLLBAR_ACCESS_TOKEN,
+  NODE_ENV
 } = process.env;
 let rollbar;
 
-if (ROLLBAR_ACCESS_TOKEN) {
+if (ROLLBAR_ACCESS_TOKEN && NODE_ENV === 'production') {
   rollbar = new Rollbar({
     accessToken: ROLLBAR_ACCESS_TOKEN,
-    environment: process.env.NODE_ENV,
+    environment: NODE_ENV,
     captureUncaught: true,
     captureUnhandledRejections: true
   });
