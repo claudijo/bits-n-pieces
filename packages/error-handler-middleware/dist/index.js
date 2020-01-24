@@ -13,6 +13,22 @@ const requestIp = require('request-ip');
 
 const logger = require('@claudijo/logger');
 
+const Rollbar = require('rollbar');
+
+const {
+  ROLLBAR_ACCESS_TOKEN
+} = process.env;
+let rollbar;
+
+if (ROLLBAR_ACCESS_TOKEN) {
+  rollbar = new Rollbar({
+    accessToken: ROLLBAR_ACCESS_TOKEN,
+    environment: process.env.NODE_ENV,
+    captureUncaught: true,
+    captureUnhandledRejections: true
+  });
+}
+
 function onError(err, req, res, next) {
   const {
     stack = '',
@@ -38,6 +54,10 @@ function onError(err, req, res, next) {
       stack
     };
     logger.error(error);
+
+    if (rollbar) {
+      rollbar.error(err, req);
+    }
   }
 
   const error = { ...rest,

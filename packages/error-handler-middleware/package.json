@@ -16,6 +16,7 @@
   "dependencies": {
     "@claudijo/logger": "^1.2.0",
     "@polka/send-type": "^0.5.2",
-    "request-ip": "^2.1.3"
+    "request-ip": "^2.1.3",
+    "rollbar": "^2.14.4"
   }
 }
