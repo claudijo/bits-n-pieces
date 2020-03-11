@@ -31,7 +31,7 @@
     "_id": { "$oid": "5da702adba4ce0c88949e6ef" },
     "title": "Leisure and hobby",
     "slug": "leisure-and-hobby",
-    "description": "Bicycles, instruments, sport and outdoor equipment",
+    "description": "Bicycles, instruments, pet supplies, sport and outdoor equipment",
     "ancestors": []
   },
   {
@@ -39,13 +39,6 @@
     "title": "Food and beverages",
     "slug": "food-and-beverages",
     "description": "Food, beverages, canned and dry goods, candy",
-    "ancestors": []
-  },
-  {
-    "_id": { "$oid": "5dc1a55cfa6bf7ac967aa88b" },
-    "title": "Pets and pet supplies",
-    "slug": "pets",
-    "description": "Pets, pet food, pet accessories",
     "ancestors": []
   }
 ]
