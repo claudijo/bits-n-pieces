@@ -21,10 +21,12 @@ function backup(db, destination) {
   return new Promise((resolve, reject) => {
     const transform = new Transform({
       writableObjectMode: true,
-      transform: function (chunk, encoding, done) {
-        this.push(JSON.stringify(chunk) + '\n');
+
+      transform(chunk, encoding, done) {
+        this.push(`${JSON.stringify(chunk)}\n`);
         done();
       }
+
     });
     pipeline(db.createReadStream(), transform, zlib.createGzip(), fs.createWriteStream(destination), err => {
       if (err) return reject(err);
