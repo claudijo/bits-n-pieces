@@ -1,6 +1,6 @@
 {
   "name": "@claudijo/level-backup-rpc-handler",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Zmq json rpc handler for backing up level db",
   "repository": {
     "type": "git",
