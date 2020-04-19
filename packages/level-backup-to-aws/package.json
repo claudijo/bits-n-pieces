@@ -1,0 +1,21 @@
+{
+  "name": "@claudijo/level-backup-to-aws",
+  "version": "0.0.0",
+  "description": "Helper to backup level db to aws connecting to a running process using zmq json rpc",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/claudijo/bits-n-pieces"
+  },
+  "main": "dist/index.js",
+  "author": "Claudijo Borovic <claudijo.borovic@gmail.com>",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@claudijo/level-backup": "^1.0.0",
+    "tmp": "^0.1.0",
+    "uuid": "^7.0.3",
+    "zmq-json-rpc-client": "0.0.1"
+  }
+}
