@@ -51,11 +51,11 @@ function backupToFile(serviceEndpoint, destination) {
 function copyToServer(source, destination) {
   return new Promise((resolve, reject) => {
     // eslint-disable-next-line consistent-return
-    exec(`aws s3 cp ${source} ${destination}`, (error /* , stdout, stderr */) => {
+    exec(`aws s3 cp ${source} ${destination}`, (error, stdout /* , stderr */) => {
       if (error) {
         return reject(error);
       }
-      resolve();
+      resolve(stdout);
     });
   });
 }
@@ -64,10 +64,12 @@ export default async function backupLevelToAws(bucket, serviceEndpoint) {
   const { path: source, cleanup } = await getTempPath();
   const destination = `${bucket}/${getTimestampedFileName()}`;
 
-  await backupToFile(serviceEndpoint, source);
-  await copyToServer(source, destination);
+  const dumpOutput = await backupToFile(serviceEndpoint, source);
+  const copyOutput = await copyToServer(source, destination);
 
   cleanup();
 
-  return { destination, source };
+  return {
+    destination, source, dumpOutput, copyOutput,
+  };
 }
