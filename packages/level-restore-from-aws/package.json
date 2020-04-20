@@ -1,6 +1,6 @@
 {
   "name": "@claudijo/level-restore-from-aws",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Helper to restore level db from aws connecting to a running process using zmq json rpc",
   "repository": {
     "type": "git",
