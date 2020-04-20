@@ -18,11 +18,11 @@ function zeroPad(num, length = 2) {
 function backupToFile(db, destination) {
   return new Promise((resolve, reject) => {
     // eslint-disable-next-line consistent-return
-    exec(`mongodump --archive=${destination} --gzip`, (error /* , stdout, stderr */) => {
+    exec(`mongodump --db=${db} --archive=${destination} --gzip`, (error, stdout /*, stderr */) => {
       if (error) {
         return reject(error);
       }
-      resolve();
+      resolve(stdout);
     });
   });
 }
@@ -57,10 +57,10 @@ export default async function mongoBackupToAws(bucket, db) {
   const { path: source, cleanup } = await getTempPath();
   const destination = `${bucket}/${getTimestampedFileName()}`;
 
-  await backupToFile(db, source);
+  const output = await backupToFile(db, source);
   await copyToServer(source, destination);
 
   cleanup();
 
-  return { destination, source };
+  return { destination, source, output };
 }

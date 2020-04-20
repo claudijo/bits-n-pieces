@@ -32,12 +32,12 @@ function zeroPad(num, length = 2) {
 
 function backupToFile(db, destination) {
   return new Promise((resolve, reject) => {
-    exec(`mongodump --archive=${destination} --gzip`, (error) => {
+    exec(`mongodump --db=${db} --archive=${destination} --gzip`, (error, stdout) => {
       if (error) {
         return reject(error);
       }
 
-      resolve();
+      resolve(stdout);
     });
   });
 }
@@ -71,12 +71,13 @@ async function mongoBackupToAws(bucket, db) {
     cleanup
   } = await getTempPath();
   const destination = `${bucket}/${getTimestampedFileName()}`;
-  await backupToFile(db, source);
+  const output = await backupToFile(db, source);
   await copyToServer(source, destination);
   cleanup();
   return {
     destination,
-    source
+    source,
+    output
   };
 }
 
