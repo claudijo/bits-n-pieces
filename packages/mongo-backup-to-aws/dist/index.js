@@ -32,12 +32,12 @@ function zeroPad(num, length = 2) {
 
 function backupToFile(db, destination) {
   return new Promise((resolve, reject) => {
-    exec(`mongodump --db=${db} --archive=${destination} --gzip`, (error, stdout) => {
+    exec(`mongodump --db=${db} --archive=${destination} --gzip`, (error, stdout, stderr) => {
       if (error) {
         return reject(error);
       }
 
-      resolve(stdout);
+      resolve(stderr);
     });
   });
 }
@@ -55,12 +55,12 @@ function getTimestampedFileName(suffix = 'mongo.gz') {
 
 function copyToServer(source, destination) {
   return new Promise((resolve, reject) => {
-    exec(`aws s3 cp ${source} ${destination}`, (error) => {
+    exec(`aws s3 cp ${source} ${destination}`, (error, stdout) => {
       if (error) {
         return reject(error);
       }
 
-      resolve();
+      resolve(stdout);
     });
   });
 }
@@ -71,13 +71,14 @@ async function mongoBackupToAws(bucket, db) {
     cleanup
   } = await getTempPath();
   const destination = `${bucket}/${getTimestampedFileName()}`;
-  const output = await backupToFile(db, source);
-  await copyToServer(source, destination);
+  const dumpOutput = await backupToFile(db, source);
+  const copyOutput = await copyToServer(source, destination);
   cleanup();
   return {
     destination,
     source,
-    output
+    dumpOutput,
+    copyOutput
   };
 }
 

@@ -18,11 +18,13 @@ function zeroPad(num, length = 2) {
 function backupToFile(db, destination) {
   return new Promise((resolve, reject) => {
     // eslint-disable-next-line consistent-return
-    exec(`mongodump --db=${db} --archive=${destination} --gzip`, (error, stdout /* , stderr */) => {
+    exec(`mongodump --db=${db} --archive=${destination} --gzip`, (error, stdout, stderr) => {
       if (error) {
         return reject(error);
       }
-      resolve(stdout);
+
+      // Mongodump writes debug to stderr(!)
+      resolve(stderr);
     });
   });
 }
@@ -44,11 +46,11 @@ function getTimestampedFileName(suffix = 'mongo.gz') {
 function copyToServer(source, destination) {
   return new Promise((resolve, reject) => {
     // eslint-disable-next-line consistent-return
-    exec(`aws s3 cp ${source} ${destination}`, (error /* , stdout, stderr */) => {
+    exec(`aws s3 cp ${source} ${destination}`, (error, stdout /* , stderr */) => {
       if (error) {
         return reject(error);
       }
-      resolve();
+      resolve(stdout);
     });
   });
 }
@@ -57,10 +59,12 @@ export default async function mongoBackupToAws(bucket, db) {
   const { path: source, cleanup } = await getTempPath();
   const destination = `${bucket}/${getTimestampedFileName()}`;
 
-  const output = await backupToFile(db, source);
-  await copyToServer(source, destination);
+  const dumpOutput = await backupToFile(db, source);
+  const copyOutput = await copyToServer(source, destination);
 
   cleanup();
 
-  return { destination, source, output };
+  return {
+    destination, source, dumpOutput, copyOutput,
+  };
 }
