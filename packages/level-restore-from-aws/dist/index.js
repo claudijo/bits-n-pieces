@@ -71,7 +71,7 @@ async function restoreLevelFromAws(remotePath, serviceEndpoint) {
   await restoreFromFile(serviceEndpoint, source);
   cleanup();
   return {
-    source
+    source: remotePath
   };
 }
 

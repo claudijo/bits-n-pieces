@@ -50,5 +50,5 @@ export default async function restoreLevelFromAws(remotePath, serviceEndpoint) {
 
   cleanup();
 
-  return { source };
+  return { source: remotePath };
 }
