@@ -1,6 +1,6 @@
 {
   "name": "@claudijo/mongo-backup-to-aws",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Helper to backup mongo db to aws",
   "repository": {
     "type": "git",
