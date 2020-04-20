@@ -14,7 +14,7 @@ function getTempPath() {
 function copyFromServer(source, destination) {
   return new Promise((resolve, reject) => {
     // eslint-disable-next-line consistent-return
-    exec(`aws s3 cp ${source} ${destination}`, (error, stdout /*, stderr */) => {
+    exec(`aws s3 cp ${source} ${destination}`, (error, stdout /* , stderr */) => {
       if (error) {
         return reject(error);
       }
