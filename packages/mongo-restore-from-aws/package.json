@@ -1,6 +1,6 @@
 {
   "name": "@claudijo/mongo-restore-from-aws",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Helper to restore mongo db from aws",
   "repository": {
     "type": "git",
