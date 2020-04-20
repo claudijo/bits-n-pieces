@@ -1,6 +1,6 @@
 {
   "name": "@claudijo/folder-backup-to-aws",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Helper to backup folders to aws",
   "repository": {
     "type": "git",
