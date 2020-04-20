@@ -18,7 +18,7 @@ function zeroPad(num, length = 2) {
 function backupToFile(db, destination) {
   return new Promise((resolve, reject) => {
     // eslint-disable-next-line consistent-return
-    exec(`mongodump --db=${db} --archive=${destination} --gzip`, (error, stdout /*, stderr */) => {
+    exec(`mongodump --db=${db} --archive=${destination} --gzip`, (error, stdout /* , stderr */) => {
       if (error) {
         return reject(error);
       }
