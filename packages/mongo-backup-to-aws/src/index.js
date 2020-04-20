@@ -15,10 +15,10 @@ function zeroPad(num, length = 2) {
   return num.toString().padStart(length, '0');
 }
 
-function backupToFile(uri, db, destination) {
+function backupToFile(uri, destination) {
   return new Promise((resolve, reject) => {
     // eslint-disable-next-line consistent-return
-    exec(`mongodump --uri=${uri} --db=${db} --archive=${destination} --gzip`, (error, stdout, stderr) => {
+    exec(`mongodump --uri=${uri} --archive=${destination} --gzip`, (error, stdout, stderr) => {
       if (error) {
         return reject(error);
       }
@@ -55,11 +55,11 @@ function copyToServer(source, destination) {
   });
 }
 
-export default async function mongoBackupToAws(bucket, db, uri = 'mongodb://127.0.0.1:27017') {
+export default async function mongoBackupToAws(bucket, db, baseUri = 'mongodb://127.0.0.1:27017') {
   const { path: source, cleanup } = await getTempPath();
   const destination = `${bucket}/${getTimestampedFileName()}`;
 
-  const dumpOutput = await backupToFile(uri, db, source);
+  const dumpOutput = await backupToFile(`${baseUri}/${db}`, source);
   const copyOutput = await copyToServer(source, destination);
 
   cleanup();
