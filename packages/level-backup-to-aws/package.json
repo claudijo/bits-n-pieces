@@ -1,6 +1,6 @@
 {
   "name": "@claudijo/level-backup-to-aws",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Helper to backup level db to aws connecting to a running process using zmq json rpc",
   "repository": {
     "type": "git",

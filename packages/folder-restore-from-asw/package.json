@@ -1,6 +1,6 @@
 {
   "name": "@claudijo/folder-restore-from-aws",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Helper to restore folders from aws",
   "repository": {
     "type": "git",
