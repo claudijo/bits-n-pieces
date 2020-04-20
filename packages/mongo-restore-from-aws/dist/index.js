@@ -14,8 +14,7 @@ const tmp = require('tmp');
 function getTempPath() {
   return new Promise((resolve, reject) => {
     tmp.file({
-      mode: 0o644,
-      discardDescriptor: true
+      mode: 0o644
     }, (error, path, fd, cleanup) => {
       if (error) return reject(error);
       resolve({

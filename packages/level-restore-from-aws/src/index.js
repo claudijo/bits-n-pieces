@@ -6,7 +6,7 @@ const { exec } = require('child_process');
 function getTempPath() {
   return new Promise((resolve, reject) => {
     // eslint-disable-next-line consistent-return
-    tmp.file({ mode: 0o644, discardDescriptor: true }, (error, path, fd, cleanup) => {
+    tmp.file({ mode: 0o644 }, (error, path, fd, cleanup) => {
       if (error) return reject(error);
       resolve({ path, fd, cleanup });
     });
