@@ -1,5 +1,12 @@
 [
   {
+    "_id": { "$oid": "5ea18273c28ed640bed1e6bd" },
+    "title": "Housing",
+    "slug": "housing",
+    "description": "Houses, apartments",
+    "ancestors": []
+  },
+  {
     "_id": { "$oid": "5da7028aba4ce0c88949e6eb" },
     "title": "Motor vehicles",
     "slug": "motor-vehicles",
@@ -39,13 +46,6 @@
     "title": "Food and beverages",
     "slug": "food-and-beverages",
     "description": "Food, beverages, canned and dry goods, candy",
-    "ancestors": []
-  },
-  {
-    "_id": { "$oid": "5ea18273c28ed640bed1e6bd" },
-    "title": "Housing",
-    "slug": "housing",
-    "description": "Houses, apartments",
     "ancestors": []
   }
 ]
