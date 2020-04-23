@@ -1,3 +1,5 @@
+// Add this line to be able to republish...
+
 // Leave categories as json so it can be used for `mongoimport` when seeding db
 import cat from './categories.json';
 
