@@ -40,5 +40,12 @@
     "slug": "food-and-beverages",
     "description": "Food, beverages, canned and dry goods, candy",
     "ancestors": []
+  },
+  {
+    "_id": { "$oid": "5ea18273c28ed640bed1e6bd" },
+    "title": "Housing",
+    "slug": "housing",
+    "description": "Houses, apartments",
+    "ancestors": []
   }
 ]
