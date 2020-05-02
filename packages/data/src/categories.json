@@ -3,7 +3,7 @@
     "_id": { "$oid": "5ea18273c28ed640bed1e6bd" },
     "title": "Housing",
     "slug": "housing",
-    "description": "Houses and apartments for rent",
+    "description": "Houses, apartments, rooms and shares for rent",
     "ancestors": []
   },
   {
