@@ -60,6 +60,14 @@ export function categoryTitle(ad) {
   return category.title;
 }
 
+export function locationInfo(ad) {
+  if (!ad.location || !ad.location.sublocality) {
+    return '';
+  }
+
+  return ` | ${ad.location.sublocality}`;
+}
+
 export function housingInfo(ad) {
   if (!isHousingCategory(ad)) {
     return '';

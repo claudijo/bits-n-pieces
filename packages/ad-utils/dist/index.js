@@ -7,6 +7,7 @@ exports.isHousingCategory = isHousingCategory;
 exports.furnishedTitle = furnishedTitle;
 exports.housingTypeTitle = housingTypeTitle;
 exports.categoryTitle = categoryTitle;
+exports.locationInfo = locationInfo;
 exports.housingInfo = housingInfo;
 exports.priceTitle = priceTitle;
 exports.fixedPriceTitle = fixedPriceTitle;
@@ -95,6 +96,14 @@ function categoryTitle(ad) {
   }
 
   return category.title;
+}
+
+function locationInfo(ad) {
+  if (!ad.location || !ad.location.sublocality) {
+    return '';
+  }
+
+  return ` | ${ad.location.sublocality}`;
 }
 
 function housingInfo(ad) {
