@@ -1,0 +1,20 @@
+{
+  "name": "@claudijo/ad-utils",
+  "version": "0.0.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/claudijo/bits-n-pieces.git"
+  },
+  "main": "dist/index.js",
+  "keywords": [],
+  "author": "Claudijo Borovic <claudijo.borovic@gmail.com>",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@claudijo/data": "^4.1.0",
+    "@claudijo/price-utils": "^0.0.1"
+  }
+}
