@@ -40,6 +40,16 @@ export function housingTypeTitle(ad) {
   return title;
 }
 
+export function mainCategoryTitle(ad) {
+  // eslint-disable-next-line no-underscore-dangle, no-shadow
+  const category = categories.find((category) => category._id.$oid === ad.category._id);
+  if (!category) {
+    return '';
+  }
+
+  return category.title;
+}
+
 export function categoryTitle(ad) {
   const housingTypes = {
     RENTAL_HOUSE: 'House',
@@ -51,13 +61,7 @@ export function categoryTitle(ad) {
     return housingTypes[ad.housingType];
   }
 
-  // eslint-disable-next-line no-underscore-dangle, no-shadow
-  const category = categories.find((category) => category._id.$oid === ad.category._id);
-  if (!category) {
-    return '';
-  }
-
-  return category.title;
+  return mainCategoryTitle(ad);
 }
 
 export function locationInfo(ad) {

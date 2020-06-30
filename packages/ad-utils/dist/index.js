@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.isHousingCategory = isHousingCategory;
 exports.furnishedTitle = furnishedTitle;
 exports.housingTypeTitle = housingTypeTitle;
+exports.mainCategoryTitle = mainCategoryTitle;
 exports.categoryTitle = categoryTitle;
 exports.locationInfo = locationInfo;
 exports.housingInfo = housingInfo;
@@ -78,6 +79,16 @@ function housingTypeTitle(ad) {
   return title;
 }
 
+function mainCategoryTitle(ad) {
+  const category = _data.categories.find(category => category._id.$oid === ad.category._id);
+
+  if (!category) {
+    return '';
+  }
+
+  return category.title;
+}
+
 function categoryTitle(ad) {
   const housingTypes = {
     RENTAL_HOUSE: 'House',
@@ -89,13 +100,7 @@ function categoryTitle(ad) {
     return housingTypes[ad.housingType];
   }
 
-  const category = _data.categories.find(category => category._id.$oid === ad.category._id);
-
-  if (!category) {
-    return '';
-  }
-
-  return category.title;
+  return mainCategoryTitle(ad);
 }
 
 function locationInfo(ad) {
