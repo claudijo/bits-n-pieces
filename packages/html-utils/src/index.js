@@ -1,3 +1,11 @@
+export function tokenizeBreaks(text = '') {
+  return text.split(/(?:\r?\n)/g);
+}
+
+export function tokenizeParagraphs(text = '') {
+  return text.split(/(?:\r?\n){2,}/g);
+}
+
 export function newLinesToParagraph(text, attributes = {}, quote = '\'') {
   let attr = Object.entries(attributes)
     .map(([key, value]) => `${key === 'className' ? 'class' : key}=${quote + value + quote}`)
@@ -7,9 +15,11 @@ export function newLinesToParagraph(text, attributes = {}, quote = '\'') {
     attr = ` ${attr}`;
   }
 
-  return `<p${attr}>${text.replace(/\r?\n([ \t]*\r?\n)+/g, `</p><p${attr}>`).replace(/\r?\n/g, '<br />')}</p>`;
+  return tokenizeParagraphs(text)
+    .map((paragraph) => `<p${attr}>${paragraph}</p>`)
+    .join('');
 }
 
 export function newLineToHtmlBreak(text = '') {
-  return text.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+  return tokenizeBreaks(text).join('<br/>');
 }
