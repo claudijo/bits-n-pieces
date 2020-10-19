@@ -11,3 +11,15 @@ export function sign(payload, secret, options = {}) {
     });
   });
 }
+
+// eslint-disable-next-line import/prefer-default-export
+export function verify(token, secret, options = {}) {
+  return new Promise((resolve, reject) => {
+    jwt.verify(token, secret, options, (error, decoded) => {
+      if (error) {
+        return reject(error);
+      }
+      return resolve(decoded);
+    });
+  });
+}
