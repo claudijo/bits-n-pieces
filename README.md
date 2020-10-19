@@ -117,7 +117,7 @@ Not bloating packages with polyfills makes it optional for consumers to add thos
 
 * Update source code and tests
 * Run `npm test` to test all packages.
-* Run `npm lint` to lint all packages.
+* Run `npm run lint` to lint all packages.
 * Run `npm run build` to transpiled source with babel and place built files in the `dist` folder of
 the package.
 * Commit and push changes to git.
