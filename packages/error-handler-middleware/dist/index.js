@@ -37,7 +37,12 @@ function onError(err, req, res, next) {
     code,
     ...rest
   } = err;
-  const statusCode = err.status || err.code || 500;
+  let statusCode = parseInt(status || code || 500, 10);
+
+  if (Number.isNaN(statusCode) || statusCode < 400 || statusCode > 599) {
+    statusCode = 500;
+  }
+
   const {
     env: {
       NODE_ENV: env
