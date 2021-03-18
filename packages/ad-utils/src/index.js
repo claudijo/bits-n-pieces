@@ -5,7 +5,7 @@ export const HOUSING_CATEGORY_ID = '5ea18273c28ed640bed1e6bd';
 
 export function isHousingCategory(ad) {
   // eslint-disable-next-line no-underscore-dangle
-  return ad.category._id === HOUSING_CATEGORY_ID;
+  return ad.category._id.toString() === HOUSING_CATEGORY_ID;
 }
 
 export const currencyCodeOptions = [
@@ -42,7 +42,7 @@ export function housingTypeTitle(ad) {
 
 export function mainCategoryTitle(ad) {
   // eslint-disable-next-line no-underscore-dangle, no-shadow
-  const category = categories.find((category) => category._id.$oid === ad.category._id);
+  const category = categories.find((category) => category._id.$oid === ad.category._id.toString());
   if (!category) {
     return '';
   }

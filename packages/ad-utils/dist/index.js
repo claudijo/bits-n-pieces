@@ -22,7 +22,7 @@ const HOUSING_CATEGORY_ID = '5ea18273c28ed640bed1e6bd';
 exports.HOUSING_CATEGORY_ID = HOUSING_CATEGORY_ID;
 
 function isHousingCategory(ad) {
-  return ad.category._id === HOUSING_CATEGORY_ID;
+  return ad.category._id.toString() === HOUSING_CATEGORY_ID;
 }
 
 const currencyCodeOptions = [{
@@ -80,7 +80,7 @@ function housingTypeTitle(ad) {
 }
 
 function mainCategoryTitle(ad) {
-  const category = _data.categories.find(category => category._id.$oid === ad.category._id);
+  const category = _data.categories.find(category => category._id.$oid === ad.category._id.toString());
 
   if (!category) {
     return '';
