@@ -44,7 +44,7 @@ function copyToServer(source, destination) {
 function archive(folder, destination) {
   return new Promise((resolve, reject) => {
     // eslint-disable-next-line consistent-return
-    exec(`tar -zcvf ${destination} *`, {
+    exec(`tar -zcf ${destination} *`, {
       cwd: folder, // Make sure to exclude underlying folder structure and start from folder
       // eslint-disable-next-line consistent-return
     }, (error, stdout /* , stderr */) => {

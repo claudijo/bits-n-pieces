@@ -56,7 +56,7 @@ function copyToServer(source, destination) {
 
 function archive(folder, destination) {
   return new Promise((resolve, reject) => {
-    exec(`tar -zcvf ${destination} *`, {
+    exec(`tar -zcf ${destination} *`, {
       cwd: folder
     }, (error, stdout) => {
       if (error) {
